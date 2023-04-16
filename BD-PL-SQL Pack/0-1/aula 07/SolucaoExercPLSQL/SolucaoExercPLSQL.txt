@@ -1,0 +1,88 @@
+Solução ao exercícios:
+
+set serveroutput on
+declare
+  a int;
+  b int;
+  d real;
+  c real;
+begin
+  a := 10;
+  b := 25;
+  c := 15;
+  d := 5.5;
+  a := b*c;
+  c := d*b+c;
+  b := b*b+18000;
+  a := a-a;
+  d := 52.55; 
+  dbms_output.put_line('O valor de A = ' || to_char(a));
+  dbms_output.put_line('O valor de B = ' || to_char(b));
+end;
+
+set serveroutput on
+declare
+  num_linhas number := 8;
+  num_colunas number := 10;
+  j int;
+begin
+  for i IN 1..num_linhas loop
+    j := 1;
+    while j <= num_colunas loop
+      dbms_output.put('*');
+      j := j + 1;
+    end loop;
+    dbms_output.new_line;
+  end loop;
+end;
+
+set serveroutput on
+declare 
+  v_data date;
+begin
+  v_data := sysdate;
+  dbms_output.put_line(v_data);
+  dbms_output.put_line(last_day(v_data));
+end;
+
+set serveroutput on
+declare 
+  tab int;
+begin
+  tab := &prm_tab;
+  for i in 1..10 loop
+    dbms_output.put_line(i||'X'||tab||'='||i*tab);
+  end loop;
+end;
+
+set serveroutput on
+declare
+  v_data date;
+  v_dia number(2);
+  v_mes number(2);
+  v_ano number(4);
+  v_esten varchar2(8);
+begin
+  v_dia := &prm_dia;
+  v_mes := &prm_mes;
+  v_ano := &prm_ano;
+  v_data := TO_DATE(TO_CHAR(v_dia)||'/'||TO_CHAR(v_mes)||'/'||TO_CHAR(v_ano), 'dd/mm/yyyy');
+  dbms_output.put_line(v_data||'-'||TO_CHAR(v_data,'dd "de" month "de" yyyy'));
+end;
+
+set serveroutput on
+declare
+  v_vel int;
+begin
+  v_vel := &prm_vel;
+  case v_vel 
+  when 10 then
+    dbms_output.put_line('Ethernet');
+  when 100 then
+    dbms_output.put_line('Fast Ethernet');
+  when 1000 then
+    dbms_output.put_line('Giga Ethernet');
+  else 
+    dbms_output.put_line('Padrão inexistente');
+  end case;
+end;

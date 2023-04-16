@@ -1,0 +1,45 @@
+SQL>edexemplo11
+
+?set serveroutputon
+
+DECLARE
+aux_salarioemp.sal%type;
+aux_faixasalgrade.grade%type;
+BEGIN
+select e.sal
+,s.grade
+into aux_salario
+,aux_faixa
+fromempe
+,salgrades
+where e.sal between s.losaland s.hisal
+and e.empno= &prm_empno;
+
+if aux_faixa= 1 then
+aux_salario:= aux_salario* 1.1;
+elsifaux_faixa= 2 then
+aux_salario:= aux_salario* 1.2;
+elsifaux_faixa= 3 then
+aux_salario:= aux_salario* 1.3;
+elsifaux_faixa= 4 then
+aux_salario:= aux_salario* 1.4;
+elsifaux_faixa= 5 then
+aux_salario:= aux_salario* 1.5;
+end if;
+
+dbms_output.put_line('Salariode ' ||to_char(aux_salario));
+
+exception
+when no_data_foundthen
+dbms_output.put_line('Empregado não cadastrado ou '
+||' não se enquadra nas faixas pré-cadastradas');
+when others then
+raise_application_error(-20501,'Erro: '||sqlerrm);
+END;
+/
+Enter value for prm_empno: 111
+old 12: and e.empno= &prm_empno;
+new12: ande.empno= 111;
+Empregado não cadastrado ou não se enquadra nas faixas pré-cadastradas
+
+PL/SQL procedure successfully completed.

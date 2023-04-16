@@ -1,0 +1,22 @@
+ATIVIDADE  DE PL_SQL - EM DUPLA
+ENTREGAR O CÓDIGO EM UMA FOLHA
+Construa a tabela Tab_IMC com as seguintes características:
+cod NUMBER(3) PRIMARY KEY,
+nome VARCHAR(20),
+peso NUMBER(3),
+altura NUMBER(3,2),
+IMC NUMBER(4,1),
+situacao VARCHAR(50);
+Inserir pelo menos 5 registros com os valores para cod, nome, peso e altura:
+INSERT INTO Tab_IMC (cod,nome,peso,altura) VALUES(        );
+ 
+Construir um bloco PL/SQL para pegar os dados da tabela Tab_IMC, calcular o IMC (Índice de Massa Corpórea) de cada registro, verificar a situação conforme a tabela abaixo e ao executar a rotina todos os registros com o IMC e a SITUAÇÃO serão completados na tabela Tab_IMC.
+
+Fórmula do IMC = peso / (altura * altura)
+
+ IMC		Situação
+Abaixo de 18,5	Abaixo do Peso Ideal
+Entre 18,5 e 24,9	Peso Normal
+Entre 25,0 e 29,9	Sobrepeso
+Entre 30,0 e 39,9	Obesidade
+Acima de 40,0	Obesidade Mórbida
